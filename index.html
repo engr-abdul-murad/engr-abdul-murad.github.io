@@ -82,8 +82,27 @@
     .hero-visual{position:relative;min-height:560px;display:grid;place-items:center}
     .portrait-shell{position:relative;width:min(370px,78vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;z-index:5}
     .portrait-shell::before{content:"";position:absolute;inset:16px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,.16),rgba(5,33,53,.88) 70%);box-shadow:0 0 80px rgba(0,212,255,.18)}
-    .portrait-frame{position:relative;width:176px;height:176px;border-radius:50%;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 8px rgba(255,215,0,.08),0 0 34px rgba(255,215,0,.45);z-index:4;background:#fff}
-    .portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+    ..portrait-frame{
+  position:relative;
+  width:194px;
+  height:194px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--gold);
+  box-shadow:0 0 0 8px rgba(255,215,0,.08),0 0 34px rgba(255,215,0,.45);
+  z-index:4;
+  background:#fff;
+}
+
+.portrait-frame img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center center;
+  background:#fff;
+  transform:scale(.94);
+  transform-origin:center center;
+}
     .orbit-ring{position:absolute;inset:0;border:1px dashed rgba(0,212,255,.34);border-radius:50%;animation:spin 20s linear infinite}
     .orbit-ring::before{content:"";position:absolute;inset:42px;border:1px solid rgba(255,215,0,.18);border-radius:50%}
     @keyframes spin{to{transform:rotate(360deg)}}
