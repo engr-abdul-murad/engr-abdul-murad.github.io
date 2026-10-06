@@ -82,9 +82,10 @@
     .hero-visual{position:relative;min-height:560px;display:grid;place-items:center}
     .portrait-shell{position:relative;width:min(370px,78vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;z-index:5}
     .portrait-shell::before{content:"";position:absolute;inset:16px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,.16),rgba(5,33,53,.88) 70%);box-shadow:0 0 80px rgba(0,212,255,.18)}
-    ..portrait-frame{psition:relative;
-  width:194px;
-  height:194px;
+    ..portrait-frame{
+  position:relative;
+  width:190px;
+  height:190px;
   border-radius:50%;
   overflow:hidden;
   border:3px solid var(--gold);
@@ -99,14 +100,14 @@
   object-fit:contain;
   object-position:center center;
   background:#fff;
-  transform:scale(.94);
+  transform:scale(.92);
   transform-origin:center center;
 }
     .orbit-ring{position:absolute;inset:0;border:1px dashed rgba(0,212,255,.34);border-radius:50%;animation:spin 20s linear infinite}
     .orbit-ring::before{content:"";position:absolute;inset:42px;border:1px solid rgba(255,215,0,.18);border-radius:50%}
     @keyframes spin{to{transform:rotate(360deg)}}
     @keyframes counterSpin{to{transform:rotate(-360deg)}}
-    .orbit-badge{position:absolute;left:50%;top:50%;width:88px;margin:-20px 0 0 -44px;transform:rotate(var(--a)) translateX(185px);transform-origin:center;z-index:8}
+    .orbit-badge{position:absolute;left:50%;top:50%;width:88px;margin:-20px 0 0 -44px;transform:rotate(var(--a)) translateX(205px);transform-origin:center;z-index:8}
     .orbit-badge button{width:88px;min-height:40px;border-radius:999px;border:1px solid rgba(0,212,255,.5);background:rgba(5,27,48,.94);color:#fff;font-size:10px;font-weight:900;letter-spacing:.04em;box-shadow:0 0 20px rgba(0,212,255,.16);animation:counterSpin 20s linear infinite;transition:.22s}
     .orbit-badge button:hover{background:var(--gold);color:#0a192f;box-shadow:0 0 26px rgba(255,215,0,.45);transform:scale(1.08)}
     .orbit-system:hover .orbit-ring,.orbit-system:hover .orbit-badge button{animation-play-state:paused}
