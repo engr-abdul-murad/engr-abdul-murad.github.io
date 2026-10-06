@@ -1,288 +1,529 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Engr. Abdul Murad - Mechanical Engineer portfolio focused on HVAC, MEP, BIM, QA/QC, research and sustainable engineering." />
-  <meta name="theme-color" content="#071c2d" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Engr. Abdul Murad - Mechanical Engineer portfolio focused on HVAC, MEP, BIM, QA/QC, research, standards and sustainable engineering.">
+  <meta name="theme-color" content="#0a192f">
   <title>Engr. Abdul Murad | Mechanical Engineer</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0a192f;
+      --navy-2:#0e2743;
+      --navy-3:#133653;
+      --cyan:#00d4ff;
+      --cyan-soft:#7cefff;
+      --gold:#ffd700;
+      --gold-2:#f4b942;
+      --paper:#f4f7fb;
+      --ink:#10243b;
+      --muted:#6b7f95;
+      --white:#fff;
+      --line:rgba(255,255,255,.14);
+      --shadow:0 20px 60px rgba(0,0,0,.22);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+    button,a{font:inherit}
+    button{cursor:pointer}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px,92vw);margin-inline:auto}
+    .hidden{display:none!important}
+
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:70;background:rgba(6,21,38,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,212,255,.18)}
+    .nav-wrap{height:72px;display:flex;align-items:center;gap:22px}
+    .brand{display:flex;align-items:center;gap:11px;color:#fff;min-width:220px}
+    .brand-mark{width:42px;height:42px;border:1px solid rgba(255,215,0,.7);border-radius:12px;display:grid;place-items:center;color:var(--gold);font-weight:900;background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(0,212,255,.08));box-shadow:inset 0 0 18px rgba(0,212,255,.08)}
+    .brand-text{display:grid;gap:2px}.brand-text strong{font-size:15px}.brand-text small{font-size:11px;color:#aac0d7}
+    .main-nav{display:flex;gap:14px;align-items:center;margin-left:auto}
+    .main-nav a{color:#c9d6e4;font-size:12px;padding:27px 2px 22px;position:relative;white-space:nowrap}
+    .main-nav a::after{content:"";position:absolute;left:0;right:0;bottom:14px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:.25s}
+    .main-nav a:hover,.main-nav a.active{color:#fff}.main-nav a:hover::after,.main-nav a.active::after{transform:scaleX(1)}
+    .nav-cta{margin-left:6px}
+    .menu-toggle{display:none;background:none;border:0;width:40px;height:40px;gap:5px;flex-direction:column;justify-content:center}
+    .menu-toggle span{height:2px;background:#fff;border-radius:2px;width:23px;margin-inline:auto}
+
+    .btn{border:0;border-radius:9px;padding:12px 18px;font-weight:800;display:inline-flex;align-items:center;gap:9px;transition:.25s;position:relative;overflow:hidden}
+    .btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.28),transparent 70%);transform:translateX(-120%);transition:.6s}
+    .btn:hover::before{transform:translateX(120%)}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#102238;box-shadow:0 10px 24px rgba(244,185,66,.18)}
+    .btn-outline{border:1px solid rgba(255,215,0,.75);background:rgba(255,255,255,.02);color:#fff}
+    .btn-small{padding:8px 12px;font-size:12px}
+
+    /* Hero */
+    .hero{position:relative;min-height:720px;background:#0a192f;color:#fff;overflow:hidden;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 74% 42%,rgba(0,212,255,.11),transparent 32%),radial-gradient(circle at 15% 30%,rgba(255,215,0,.06),transparent 24%),linear-gradient(90deg,#071827 0%,#0a192f 52%,#0b2038 100%);z-index:-5}
+    .hero-grid{min-height:720px;display:grid;grid-template-columns:1.08fr .92fr;gap:38px;align-items:center;padding:80px 0 72px;position:relative;z-index:4}
+    .hero-copy{padding-right:20px}
+    .eyebrow{font-size:13px;letter-spacing:.32em;color:var(--gold);font-weight:900;margin-bottom:13px}
+    .hero h1{font-size:clamp(42px,5vw,72px);line-height:.98;margin:0 0 12px;letter-spacing:-.045em;min-height:72px}
+    .type-cursor{display:inline-block;width:3px;height:.9em;background:var(--gold);margin-left:5px;vertical-align:-.06em;animation:blink .8s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    .hero h2{font-size:clamp(19px,2.2vw,31px);margin:0 0 18px;color:#e8f5ff;font-weight:700}.hero h2 em{font-style:normal;color:var(--gold);padding:0 7px}
+    .hero-copy>p{font-size:16px;line-height:1.75;color:#b8cde0;max-width:690px;margin:0 0 24px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:23px 0 26px}
+    .hero-badges{display:flex;gap:10px;flex-wrap:wrap}.hero-badges span{border:1px solid rgba(0,212,255,.22);background:rgba(0,212,255,.06);padding:8px 10px;border-radius:999px;color:#d7edff;font-size:12px}.hero-badges b{color:var(--gold);margin-right:4px}
+
+    /* Blueprint background */
+    .blueprint{position:absolute;inset:0 0 0 auto;width:68%;height:100%;z-index:-1;opacity:.22;filter:drop-shadow(0 0 6px rgba(0,212,255,.35));pointer-events:none}
+    .blueprint .pipe{fill:none;stroke:var(--cyan);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+    .blueprint .thin{fill:none;stroke:var(--cyan);stroke-width:1.15}.blueprint .dim{fill:none;stroke:#6fe7ff;stroke-width:.7;stroke-dasharray:5 7}
+    .blueprint .air{fill:none;stroke:#88f6ff;stroke-width:1.6;stroke-dasharray:8 12;animation:flow 7s linear infinite}
+    @keyframes flow{to{stroke-dashoffset:-220}}
+
+    /* Profile orbit */
+    .hero-visual{position:relative;min-height:560px;display:grid;place-items:center}
+    .portrait-shell{position:relative;width:min(370px,78vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;z-index:5}
+    .portrait-shell::before{content:"";position:absolute;inset:16px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,.16),rgba(5,33,53,.88) 70%);box-shadow:0 0 80px rgba(0,212,255,.18)}
+    .portrait-frame{position:relative;width:176px;height:176px;border-radius:50%;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 8px rgba(255,215,0,.08),0 0 34px rgba(255,215,0,.45);z-index:4;background:#fff}
+    .portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+    .orbit-ring{position:absolute;inset:0;border:1px dashed rgba(0,212,255,.34);border-radius:50%;animation:spin 20s linear infinite}
+    .orbit-ring::before{content:"";position:absolute;inset:42px;border:1px solid rgba(255,215,0,.18);border-radius:50%}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes counterSpin{to{transform:rotate(-360deg)}}
+    .orbit-badge{position:absolute;left:50%;top:50%;width:88px;margin:-20px 0 0 -44px;transform:rotate(var(--a)) translateX(185px);transform-origin:center;z-index:8}
+    .orbit-badge button{width:88px;min-height:40px;border-radius:999px;border:1px solid rgba(0,212,255,.5);background:rgba(5,27,48,.94);color:#fff;font-size:10px;font-weight:900;letter-spacing:.04em;box-shadow:0 0 20px rgba(0,212,255,.16);animation:counterSpin 20s linear infinite;transition:.22s}
+    .orbit-badge button:hover{background:var(--gold);color:#0a192f;box-shadow:0 0 26px rgba(255,215,0,.45);transform:scale(1.08)}
+    .orbit-system:hover .orbit-ring,.orbit-system:hover .orbit-badge button{animation-play-state:paused}
+    .orbit-core-label{position:absolute;bottom:23px;text-align:center;z-index:6;color:#d9edf9}.orbit-core-label strong{display:block;color:var(--gold);font-size:12px;letter-spacing:.16em}.orbit-core-label small{font-size:10px;color:#8facc3}
+    .hero-stats{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:1px;width:min(760px,92vw);background:rgba(255,255,255,.12);border:1px solid rgba(0,212,255,.2);border-bottom:0;border-radius:16px 16px 0 0;overflow:hidden;z-index:7;box-shadow:0 -12px 40px rgba(0,0,0,.18)}
+    .stat{background:rgba(5,26,45,.95);padding:15px 20px;text-align:center}.stat strong{display:block;color:var(--gold);font-size:28px;line-height:1}.stat span{font-size:11px;color:#b8cee0;letter-spacing:.08em;text-transform:uppercase}
+
+    /* Sections */
+    .section{padding:88px 0}.section-light{background:#f6f8fc}.section-dark{background:var(--navy);color:#fff}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:32px}.section-heading h2{margin:4px 0 0;font-size:clamp(30px,4vw,48px);letter-spacing:-.035em}.section-heading p{max-width:520px;color:var(--muted);line-height:1.7;margin:0}.section-dark .section-heading p{color:#aac0d7}
+    .section-kicker{color:#bd8a00;font-weight:900;font-size:12px;letter-spacing:.22em}.section-dark .section-kicker{color:var(--gold)}
+    .accent-line{height:3px;width:74px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:12px}
+
+    /* Tool cards */
+    .tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .tool-card{background:#fff;border:1px solid #e0e8f1;border-radius:16px;padding:22px;display:grid;grid-template-columns:50px 1fr;gap:14px;align-items:center;box-shadow:0 10px 28px rgba(12,37,62,.06);transition:.25s;position:relative;overflow:hidden;text-align:left}
+    .tool-card::after{content:"";position:absolute;inset:auto -20% -70% 30%;height:150px;background:radial-gradient(circle,rgba(0,212,255,.17),transparent 65%);transition:.3s}
+    .tool-card:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.45);box-shadow:0 18px 34px rgba(12,37,62,.13)}.tool-card:hover::after{transform:translateY(-24px)}
+    .tool-card .icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-weight:900;box-shadow:inset 0 0 18px rgba(0,212,255,.16)}
+    .tool-card strong{display:block;font-size:14px}.tool-card small{display:block;color:#70849a;margin-top:4px}
+
+    /* Projects */
+    .project-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:18px}
+    .project-card{background:#fff;border-radius:18px;overflow:hidden;border:1px solid #dfe8f0;box-shadow:0 14px 32px rgba(9,35,57,.08);transition:.25s;position:relative}.project-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(9,35,57,.14)}
+    .project-image{height:220px;position:relative;overflow:hidden;background:#0d2742}.project-image img{width:100%;height:100%;object-fit:cover;transition:.45s}.project-card:hover .project-image img{transform:scale(1.04)}
+    .project-overlay{position:absolute;inset:auto 0 0;padding:40px 18px 16px;background:linear-gradient(transparent,rgba(4,20,34,.9));color:#fff;font-size:12px;font-weight:800}
+    .project-body{padding:20px}.project-body h3{margin:0 0 10px;font-size:20px}.project-body p{margin:0 0 15px;color:#667c91;line-height:1.6}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}.tags span{font-size:10px;font-weight:800;padding:6px 9px;border-radius:999px;background:#fff2bf;color:#654d00}
+    .project-actions{display:flex;gap:8px;flex-wrap:wrap}.link-btn{border:0;background:none;color:#0c5b7a;font-weight:900;font-size:12px;padding:0}.link-btn:hover{color:#bd8a00}
+    .semester-art{height:150px;background:linear-gradient(145deg,#0c2741,#164e6e);display:grid;place-items:center;overflow:hidden}.semester-art svg{width:94%;height:94%}
+    .volunteer-card .project-image{background:linear-gradient(135deg,#e9f3fb,#fff);display:grid;place-items:center}.ieee-mark{font-size:52px;font-weight:900;color:#0c4ba1;letter-spacing:-.08em}.pulse-dot{width:12px;height:12px;border-radius:50%;background:#00d4ff;display:inline-block;margin-left:6px;box-shadow:0 0 0 0 rgba(0,212,255,.5);animation:pulse 1.8s infinite}@keyframes pulse{70%{box-shadow:0 0 0 13px rgba(0,212,255,0)}}
+
+    /* Experience / Education */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:42px}.timeline{position:relative;padding-left:28px}.timeline::before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:linear-gradient(var(--gold),rgba(0,212,255,.4),transparent)}
+    .timeline-item{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:18px 18px 18px 20px;margin-bottom:14px;box-shadow:0 10px 25px rgba(10,40,70,.05)}.timeline-item::before{content:"";position:absolute;left:-28px;top:25px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px #fff,0 0 0 7px rgba(255,215,0,.35)}
+    .timeline-item time{font-size:11px;color:#70849a}.timeline-item h3{margin:5px 0 4px;font-size:17px}.timeline-item p{margin:0 0 10px;color:#60768b;font-size:13px}.view-more{border:0;background:transparent;color:#0e6786;font-weight:900;font-size:12px;padding:0}
+    .edu-card{background:linear-gradient(135deg,#0d2742,#123c5c);color:#fff;border-radius:18px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden;box-shadow:0 16px 34px rgba(4,24,43,.18)}.edu-card::after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(0,212,255,.16);right:-50px;top:-50px;transform:rotate(30deg)}.edu-card h3{margin:0 0 7px;font-size:21px}.edu-card p{margin:0 0 8px;color:#c5d9e7}.edu-card small{color:#9bb8cb;line-height:1.5}.edu-meta{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}.edu-meta span{font-size:10px;padding:5px 8px;border-radius:999px;border:1px solid rgba(255,215,0,.4);color:#ffe77c}
+
+    /* Credentials */
+    .credential-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.credential-panel{background:#fff;border:1px solid #e0e7ef;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(10,40,70,.05)}.credential-list{display:grid;gap:10px;margin-top:14px}.credential-item{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:12px;background:#f8fafc;border:1px solid #edf1f5;transition:.2s}.credential-item:hover{transform:translateX(4px);background:#fffdf5}.credential-icon{width:42px;height:42px;border-radius:12px;background:#0d2742;color:var(--gold);display:grid;place-items:center;font-weight:900}.credential-item strong{font-size:13px}.credential-item small{display:block;color:#75899c;margin-top:3px}.credential-item button{border:0;background:none;color:#0b6484;font-size:11px;font-weight:900}
+
+    /* Conferences */
+    .conference-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.conference-strip::-webkit-scrollbar{height:7px}.conference-strip::-webkit-scrollbar-thumb{background:#b8c8d6;border-radius:9px}.conference-card{scroll-snap-align:start;background:#fff;border:1px solid #dfe8ef;border-radius:16px;padding:18px;min-height:180px;box-shadow:0 10px 24px rgba(10,40,70,.05)}.conference-card .year{font-size:11px;color:#a17300;font-weight:900}.conference-card h3{font-size:16px;margin:8px 0}.conference-card p{color:#6b7f92;font-size:13px;line-height:1.55}.conference-card button{border:0;background:none;color:#0a5f80;font-weight:900;padding:0}
+
+    /* Research */
+    .research-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:34px;align-items:center}.book-cover{border-radius:16px;overflow:hidden;box-shadow:0 20px 55px rgba(0,0,0,.24);transform:perspective(1100px) rotateY(8deg);transition:.4s}.book-cover:hover{transform:perspective(1100px) rotateY(0)}
+    .research-card{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);border-radius:14px;padding:18px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.research-card strong{font-size:14px}.research-card small{display:block;color:#91afc6;margin-top:4px}.research-card button{border:0;background:transparent;color:var(--gold);font-weight:900}
+    .privacy-note{margin-top:14px;font-size:11px;color:#89a7bd;line-height:1.6;border-left:2px solid rgba(0,212,255,.5);padding-left:12px}
+
+    /* Contact */
+    .contact-band{background:linear-gradient(115deg,#071827,#0e314e);color:#fff;padding:52px 0;position:relative;overflow:hidden}.contact-band::after{content:"";position:absolute;inset:auto 0 0 45%;height:100%;background:repeating-linear-gradient(0deg,transparent 0 24px,rgba(0,212,255,.04) 25px 26px),repeating-linear-gradient(90deg,transparent 0 24px,rgba(0,212,255,.04) 25px 26px)}
+    .contact-grid{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;position:relative;z-index:2}.contact-grid h2{font-size:36px;margin:0 0 9px}.contact-grid p{color:#a8bed0;margin:0 0 18px}.contact-links{display:flex;gap:12px;flex-wrap:wrap}.contact-pill{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 13px;font-size:12px;color:#d7e7f2;background:rgba(255,255,255,.04)}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:22px}.modal.open{display:grid}.modal-overlay{position:absolute;inset:0;background:rgba(1,8,16,.82);backdrop-filter:blur(12px);animation:fadeIn .25s ease both}.modal-panel{position:relative;z-index:2;width:min(860px,94vw);max-height:88vh;overflow:auto;background:#fff;border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.45);border:1px solid rgba(255,215,0,.2);transform-origin:top center;animation:unfold .72s ease-out both}.modal-panel.full{width:min(1080px,96vw)}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes unfold{0%{transform:scaleY(0) rotateX(-90deg) scale(.5);opacity:0;filter:blur(10px)}55%{transform:scaleY(1.04) rotateX(4deg) scale(1.03);opacity:1;filter:blur(0)}100%{transform:scaleY(1) rotateX(0) scale(1);opacity:1;filter:blur(0)}}
+    .modal-head{position:sticky;top:0;background:linear-gradient(135deg,#0b2037,#0f3a59);color:#fff;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,212,255,.2);z-index:4}.modal-head small{display:block;color:#9fc0d8;margin-top:4px}.modal-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:20px}.modal-body{padding:25px}.detail-list{display:grid;gap:10px;padding:0;margin:0;list-style:none}.detail-list li{position:relative;padding:11px 12px 11px 34px;background:#f6f9fc;border-radius:11px;color:#334a5f;line-height:1.55}.detail-list li::before{content:"";position:absolute;left:14px;top:17px;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(255,215,0,.17)}
+    .modal-note{background:#eef7fb;border-left:3px solid var(--cyan);padding:12px 14px;border-radius:8px;color:#3c5870;font-size:12px;margin-top:16px;line-height:1.6}
+    .project-index{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.project-index button{display:flex;gap:14px;align-items:center;text-align:left;border:1px solid #dfe7ee;background:#fff;border-radius:14px;padding:16px;transition:.2s}.project-index button:hover{transform:translateY(-3px);border-color:#f1bd35;box-shadow:0 12px 25px rgba(13,46,70,.08)}.project-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#0d2742;color:var(--gold);font-weight:900;flex:0 0 auto}.project-index strong{display:block}.project-index small{color:#71879a}
+
+    .toast{position:fixed;right:20px;bottom:20px;z-index:140;background:#0b2037;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:0 18px 45px rgba(0,0,0,.3);opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}
+
+    @media (max-width:1050px){
+      .main-nav{display:none;position:absolute;left:0;right:0;top:72px;background:#071827;padding:14px 4vw 20px;grid-template-columns:repeat(2,1fr);border-bottom:1px solid rgba(0,212,255,.16)}.main-nav.open{display:grid}.main-nav a{padding:11px}.main-nav a::after{display:none}.menu-toggle{display:flex;margin-left:auto}.nav-cta{display:none}
+      .hero-grid{grid-template-columns:1fr;min-height:auto;padding-top:64px;padding-bottom:120px}.hero-copy{padding-right:0}.hero-visual{min-height:530px}.blueprint{width:100%;opacity:.12}.project-grid{grid-template-columns:1fr 1fr}.project-card:first-child{grid-column:1/-1}.split,.research-grid{grid-template-columns:1fr}.credential-grid{grid-template-columns:1fr}.tool-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:680px){
+      .hero{min-height:auto}.hero-grid{padding-top:48px}.hero h1{font-size:44px;min-height:50px}.hero h2{font-size:20px}.hero-visual{min-height:440px}.portrait-shell{width:310px}.portrait-frame{width:150px;height:150px}.orbit-badge{width:74px;margin-left:-37px;transform:rotate(var(--a)) translateX(150px)}.orbit-badge button{width:74px;min-height:36px;font-size:9px}.hero-stats{grid-template-columns:1fr 1fr 1fr}.stat{padding:12px 8px}.stat strong{font-size:23px}.stat span{font-size:9px}
+      .section{padding:64px 0}.section-heading{display:block}.section-heading p{margin-top:14px}.tool-grid,.project-grid{grid-template-columns:1fr}.project-card:first-child{grid-column:auto}.contact-grid{grid-template-columns:1fr}.project-index{grid-template-columns:1fr}.credential-item{grid-template-columns:42px 1fr}.credential-item button{grid-column:2}.conference-strip{grid-auto-columns:86%}
+      .brand-text small{display:none}.brand{min-width:0}.nav-wrap{gap:10px}.main-nav{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-  <div class="page-progress" aria-hidden="true"><span id="pageProgress"></span></div>
-
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#home" aria-label="Engr. Abdul Murad home">
+      <a class="brand" href="#home">
         <span class="brand-mark">AM</span>
         <span class="brand-text"><strong>Engr. Abdul Murad</strong><small>Mechanical Engineer</small></span>
       </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#credentials">Credentials</a>
-        <a href="#conferences">Conferences</a>
-        <a href="#contact">Contact</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <nav class="main-nav" id="mainNav">
+        <a href="#home" class="active">Home</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#credentials">Credentials</a><a href="#conferences">Conferences</a><a href="#research">Research</a><a href="#contact">Contact</a>
       </nav>
-
-      <a class="btn btn-gold nav-cta" href="mailto:muradjehan21@gmail.com">Get in Touch</a>
+      <a class="btn btn-gold nav-cta" href="#contact">Get in Touch</a>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <svg class="blueprint" viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g opacity=".38">
+          <path class="thin" d="M120 70H920M160 130H960M80 620H940M240 680H980M210 45V720M360 15V710M520 60V730M710 0V710M860 40V760"/>
+          <path class="dim" d="M280 185h190v150H280zM550 145h250v180H550zM420 420h310v150H420z"/>
+          <path class="thin" d="M570 167h180v92H570zM600 190h36v36h-36zM655 190h36v36h-36zM710 190h22v66h-22z"/>
+          <path class="thin" d="M314 210h124v88H314zM335 229h82v49h-82z"/>
+          <path class="pipe" d="M480 520h140c35 0 50-20 50-48V346c0-28 16-46 45-46h135"/>
+          <path class="pipe" d="M510 548h132c39 0 58-24 58-56V390c0-28 18-45 44-45h156"/>
+          <path class="pipe" d="M545 575h118c50 0 68-27 68-67V434c0-26 15-44 41-44h114"/>
+          <path class="pipe" d="M845 300v-84c0-28-16-44-44-44h-75"/>
+          <path class="pipe" d="M900 345v-145c0-33-18-54-54-54H792"/>
+          <path class="pipe" d="M778 388v126c0 28 17 44 44 44h108"/>
+          <path class="air" d="M500 520h120c34 0 49-17 49-47V349c0-31 16-49 48-49h123"/>
+          <path class="air" d="M525 548h117c38 0 56-21 56-54V392c0-30 18-47 46-47h144"/>
+          <circle class="thin" cx="480" cy="520" r="18"/><circle class="thin" cx="510" cy="548" r="18"/><circle class="thin" cx="545" cy="575" r="18"/>
+          <circle class="thin" cx="845" cy="300" r="15"/><circle class="thin" cx="900" cy="345" r="15"/>
+          <path class="thin" d="M610 145l-35-35h255l-30 35M550 325l-35 35h355l-40-35M420 420l-36-34h382l-36 34"/>
+          <path class="thin" d="M80 620l200-120 120 30 190-120 260 85 90-60M130 680l210-90 160 26 140-72 220 64"/>
+        </g>
+      </svg>
+
       <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-          <div class="eyebrow"><span></span> MECHANICAL ENGINEER</div>
-          <h1>Engr. Abdul Murad</h1>
+        <div class="hero-copy" data-aos="fade-right" data-aos-duration="900">
+          <div class="eyebrow">MECHANICAL ENGINEER</div>
+          <h1><span id="typeName"></span><span class="type-cursor"></span></h1>
           <h2>HVAC &amp; MEP <em>|</em> BIM <em>|</em> QA/QC <em>|</em> Research</h2>
-          <p>
-            Mechanical Engineer with experience in HVAC systems, MEP coordination, Revit BIM modelling,
-            technical documentation, equipment support, QA/QC and sustainable engineering research.
-          </p>
-
-          <div class="hero-badges">
-            <span><b>PEC</b> Registered Engineer</span>
-            <span><b>No.</b> 059962</span>
-            <span><b>ASME</b> Member</span>
-          </div>
-
+          <p>Mechanical Engineer with practical experience across HVAC systems, MEP coordination, Revit BIM modelling, technical documentation, equipment support, QA/QC and sustainable engineering research.</p>
+          <div class="hero-badges"><span><b>PEC</b> Registered Engineer</span><span><b>Reg.</b> 059962</span><span><b>ASME</b> Member</span></div>
           <div class="hero-actions">
-            <a class="btn btn-gold" href="#projects">View Projects <span>→</span></a>
-            <a class="btn btn-outline" href="assets/docs/Engr_Abdul_Murad_Professional_CV.pdf" target="_blank" rel="noopener">Download CV <span>↓</span></a>
-          </div>
-
-          <div class="hero-focus">
-            <div><span class="mini-icon">HV</span><strong>HVAC &amp; MEP</strong><small>Design & coordination</small></div>
-            <div><span class="mini-icon">BI</span><strong>BIM</strong><small>Revit & documentation</small></div>
-            <div><span class="mini-icon">QC</span><strong>QA/QC</strong><small>Inspection & standards</small></div>
-            <div><span class="mini-icon">RS</span><strong>Research</strong><small>Energy & desalination</small></div>
+            <button class="btn btn-gold" onclick="openProjectIndex()">View Projects <span>→</span></button>
+            <button class="btn btn-outline" onclick="openDetail('cv')">View CV Profile <span>↗</span></button>
           </div>
         </div>
 
-        <div class="hero-visual" data-reveal>
-          <div class="blueprint-orbit orbit-a"></div>
-          <div class="blueprint-orbit orbit-b"></div>
-          <div class="portrait-frame">
-            <div class="portrait-inner">
-              <img src="assets/img/portrait.jpg" alt="Engr. Abdul Murad" />
-            </div>
+        <div class="hero-visual" data-aos="zoom-in" data-aos-duration="1100">
+          <div class="portrait-shell orbit-system">
+            <div class="orbit-ring"></div>
+            <div class="portrait-frame"><img src="assets/img/portrait.jpg" alt="Engr. Abdul Murad"></div>
+            <div class="orbit-core-label"><strong>CORE CREDENTIALS</strong><small>Click any orbiting badge</small></div>
+            <div class="orbit-badge" style="--a:0deg"><button onclick="openDetail('pec')">PEC</button></div>
+            <div class="orbit-badge" style="--a:30deg"><button onclick="openDetail('iaeng')">IAENG</button></div>
+            <div class="orbit-badge" style="--a:60deg"><button onclick="openDetail('hvac')">HVAC</button></div>
+            <div class="orbit-badge" style="--a:90deg"><button onclick="openDetail('iso')">ISO</button></div>
+            <div class="orbit-badge" style="--a:120deg"><button onclick="openDetail('asme')">ASME</button></div>
+            <div class="orbit-badge" style="--a:150deg"><button onclick="openDetail('revit')">Revit MEP</button></div>
+            <div class="orbit-badge" style="--a:180deg"><button onclick="openDetail('qc')">QC</button></div>
+            <div class="orbit-badge" style="--a:210deg"><button onclick="openDetail('qa')">QA</button></div>
+            <div class="orbit-badge" style="--a:240deg"><button onclick="openDetail('ashrae')">ASHRAE</button></div>
+            <div class="orbit-badge" style="--a:270deg"><button onclick="openDetail('bim')">BIM</button></div>
+            <div class="orbit-badge" style="--a:300deg"><button onclick="openDetail('solidworks')">SolidWorks</button></div>
+            <div class="orbit-badge" style="--a:330deg"><button onclick="openDetail('pm')">PM</button></div>
           </div>
-          <div class="hero-tech-card card-a"><span>Revit MEP</span><small>BIM modelling</small></div>
-          <div class="hero-tech-card card-b"><span>HVAC</span><small>Design & simulation</small></div>
-          <div class="hero-tech-card card-c"><span>ISO / ASME</span><small>Quality standards</small></div>
-          <div class="hero-tech-card card-d"><span>PEC</span><small>Registered Engineer</small></div>
         </div>
       </div>
-      <div class="hero-bottom-line"></div>
+
+      <div class="hero-stats">
+        <div class="stat"><strong data-count="5">0</strong><span>Projects Completed</span></div>
+        <div class="stat"><strong data-count="8">0</strong><span>Certifications</span></div>
+        <div class="stat"><strong data-count="3">0</strong><span>Years Experience</span></div>
+      </div>
     </section>
 
-    <section class="tool-strip" id="skills">
+    <section class="section" id="skills">
       <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+          <div><span class="section-kicker">SKILLS & TOOLS</span><h2>Engineering Toolkit</h2><div class="accent-line"></div></div>
+          <p>Each card opens a focused detail view with the capability, typical use and the kind of engineering work it supports.</p>
+        </div>
         <div class="tool-grid">
-          <div class="tool-card" data-reveal><span class="tool-icon red">A</span><strong>AutoCAD MEP</strong><small>Drafting & Design</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon blue">R</span><strong>Revit MEP</strong><small>BIM Modelling</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon cyan">B</span><strong>BIM 360</strong><small>Collaboration</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon rust">SW</span><strong>SolidWorks</strong><small>3D Modelling</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon steel">MEP</span><strong>HVAC / MEP</strong><small>Systems Design</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon gold">QC</span><strong>QA/QC</strong><small>Inspection</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon green">ISO</span><strong>Standards</strong><small>ISO / ASME</small></div>
-          <div class="tool-card" data-reveal><span class="tool-icon violet">PM</span><strong>Coordination</strong><small>Projects & Sites</small></div>
+          <button class="tool-card" data-aos="fade-up" onclick="openDetail('autocad')"><span class="icon">A</span><span><strong>AutoCAD MEP</strong><small>Drafting & design</small></span></button>
+          <button class="tool-card" data-aos="fade-up" data-aos-delay="60" onclick="openDetail('revit')"><span class="icon">R</span><span><strong>Revit MEP</strong><small>BIM modelling</small></span></button>
+          <button class="tool-card" data-aos="fade-up" data-aos-delay="120" onclick="openDetail('bim360')"><span class="icon">B</span><span><strong>BIM 360</strong><small>Collaboration</small></span></button>
+          <button class="tool-card" data-aos="fade-up" data-aos-delay="180" onclick="openDetail('solidworks')"><span class="icon">SW</span><span><strong>SolidWorks</strong><small>3D modelling</small></span></button>
+          <button class="tool-card" data-aos="fade-up" onclick="openDetail('hvac')"><span class="icon">MEP</span><span><strong>HVAC / MEP</strong><small>Systems design</small></span></button>
+          <button class="tool-card" data-aos="fade-up" data-aos-delay="60" onclick="openDetail('qc')"><span class="icon">QC</span><span><strong>Quality Control</strong><small>Inspection & testing</small></span></button>
+          <button class="tool-card" data-aos="fade-up" data-aos-delay="120" onclick="openDetail('iso')"><span class="icon">ISO</span><span><strong>ISO / ASME</strong><small>Standards awareness</small></span></button>
+          <button class="tool-card" data-aos="fade-up" data-aos-delay="180" onclick="openDetail('pm')"><span class="icon">PM</span><span><strong>Project Coordination</strong><small>Sites & documentation</small></span></button>
         </div>
       </div>
     </section>
 
     <section class="section section-light" id="projects">
       <div class="container">
-        <div class="section-heading" data-reveal>
-          <div><span class="section-kicker">SELECTED WORK</span><h2>Projects</h2></div>
-          <p>Research, semester work and community service are separated so each contribution is clear.</p>
+        <div class="section-heading" data-aos="fade-up">
+          <div><span class="section-kicker">PROJECTS LOGIC</span><h2>Selected Projects</h2><div class="accent-line"></div></div>
+          <button class="btn btn-gold" onclick="openProjectIndex()">View All Projects</button>
         </div>
-
-        <div class="project-layout">
-          <article class="project-card project-feature" data-reveal>
-            <div class="project-image-wrap">
-              <img src="assets/img/fyp-experimental.jpg" alt="Solar desalination experimental setup" />
-              <span class="project-label">Final Year Project · Research</span>
-            </div>
-            <div class="project-body">
-              <h3>Solar Powered Desalination System With Forced Air Bubbling Effects</h3>
-              <p>Design, mathematical modelling, fabrication, testing and performance evaluation of a solar desalination system using forced-air bubbling.</p>
-              <div class="tags"><span>Research</span><span>Experimental</span><span>Sustainable Water</span></div>
-              <div class="project-links">
-                <a href="assets/docs/Abdul_Murad_Academic_Monograph.pdf" target="_blank" rel="noopener">Academic Monograph →</a>
-                <a href="assets/docs/Abdul_Murad_Research_Paper.pdf" target="_blank" rel="noopener">Research Paper →</a>
-              </div>
-            </div>
+        <div class="project-grid">
+          <article class="project-card" data-aos="fade-up">
+            <div class="project-image"><img src="assets/img/fyp-experimental.jpg" alt="Solar desalination experimental setup"><div class="project-overlay">01 · FINAL YEAR RESEARCH</div></div>
+            <div class="project-body"><h3>Solar Powered Desalination with Forced-Air Bubbling</h3><p>Experimental research combining design, mathematical modelling, fabrication, testing and performance evaluation.</p><div class="tags"><span>Research</span><span>Thermal Systems</span><span>Sustainable Water</span></div><div class="project-actions"><button class="link-btn" onclick="openDetail('project-fyp')">Open Learning View →</button></div></div>
           </article>
 
-          <article class="project-card semester-card" data-reveal>
-            <div class="project-title-bar"><span>Semester Projects</span><small>Academic Coursework</small></div>
-            <div class="semester-grid">
-              <div class="mini-project"><div class="mini-project-icon">☀</div><h4>Solar Tracker System</h4><span>Semester Project</span></div>
-              <div class="mini-project"><div class="mini-project-icon">⌂</div><h4>Smart Solar Home System</h4><span>Semester Project</span></div>
-              <div class="mini-project"><div class="mini-project-icon">⚡</div><h4>Energy Storage System Using Super Capacitor (ESSC)</h4><span>Semester Project</span></div>
+          <article class="project-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="semester-art">
+              <svg viewBox="0 0 340 160" aria-hidden="true"><defs><linearGradient id="p" x1="0" x2="1"><stop stop-color="#0b466a"/><stop offset="1" stop-color="#22a5cf"/></linearGradient></defs><polygon points="75,35 235,35 268,96 108,96" fill="url(#p)" stroke="#93f0ff" stroke-width="3"/><g stroke="#d9fbff" opacity=".7"><path d="M100 35l33 61M130 35l34 61M160 35l34 61M190 35l34 61M220 35l34 61"/><path d="M89 55h157M96 75h158"/></g><path d="M168 97v35M138 132h62" stroke="#ffd700" stroke-width="5"/><circle cx="169" cy="118" r="8" fill="#ffd700"/></svg>
             </div>
-            <p class="source-note">Detailed technical pages can be added when you provide each semester project's drawings, images and results.</p>
+            <div class="project-body"><h3>Solar Tracker System</h3><p>Semester project exploring controlled orientation of a solar panel to improve exposure to available sunlight.</p><div class="tags"><span>Renewable Energy</span><span>Prototype</span></div><button class="link-btn" onclick="openDetail('project-tracker')">View Project →</button></div>
           </article>
 
-          <article class="project-card volunteer-card" data-reveal>
-            <div class="volunteer-mark">IEEE</div>
-            <span class="project-label dark">Volunteer Project</span>
-            <h3>Combating Disability Through Training of Independent Living for Physically Challenged Persons</h3>
-            <p><strong>Project #22-HAC-144</strong> · Volunteer service on an IEEE-funded community project supporting independent-living training.</p>
-            <div class="tags"><span>Community Service</span><span>Volunteer</span><span>IEEE</span></div>
+          <article class="project-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="semester-art"><svg viewBox="0 0 340 160" aria-hidden="true"><path d="M65 92l105-65 105 65v48H65z" fill="#f0f6fb" stroke="#8edbf0" stroke-width="3"/><path d="M88 81l82-50 82 50" stroke="#ffd700" stroke-width="5"/><rect x="150" y="94" width="40" height="46" fill="#0d2742"/><polygon points="182,46 232,58 220,90 170,78" fill="#1f7ba0" stroke="#9df5ff" stroke-width="2"/><circle cx="108" cy="106" r="9" fill="#00d4ff"/><path d="M108 115v18m-15 0h30" stroke="#00d4ff" stroke-width="3"/></svg></div>
+            <div class="project-body"><h3>Smart Solar Home System</h3><p>Semester concept combining solar power, household loads and energy-aware control for a small residential environment.</p><div class="tags"><span>Solar</span><span>Smart Home</span></div><button class="link-btn" onclick="openDetail('project-home')">View Project →</button></div>
+          </article>
+
+          <article class="project-card volunteer-card" data-aos="fade-up">
+            <div class="project-image"><div><div class="ieee-mark">IEEE<span class="pulse-dot"></span></div></div><div class="project-overlay">04 · VOLUNTEER PROJECT</div></div>
+            <div class="project-body"><h3>Combating Disability Through Training of Independent Living</h3><p>Volunteer support for IEEE-funded Project #22-HAC-144 serving physically challenged persons.</p><div class="tags"><span>Volunteer</span><span>Community Service</span><span>IEEE</span></div><button class="link-btn" onclick="openDetail('ieee-volunteer')">View Volunteer Details →</button></div>
+          </article>
+
+          <article class="project-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="semester-art"><svg viewBox="0 0 340 160" aria-hidden="true"><g transform="translate(38 26)"><rect x="0" y="0" width="38" height="94" rx="6" fill="#132f4b" stroke="#00d4ff"/><rect x="46" y="0" width="38" height="94" rx="6" fill="#173d5f" stroke="#00d4ff"/><rect x="92" y="0" width="38" height="94" rx="6" fill="#132f4b" stroke="#00d4ff"/><rect x="138" y="0" width="38" height="94" rx="6" fill="#173d5f" stroke="#00d4ff"/><rect x="184" y="0" width="38" height="94" rx="6" fill="#132f4b" stroke="#00d4ff"/><path d="M19 14v66M65 14v66M111 14v66M157 14v66M203 14v66" stroke="#ffd700" stroke-width="4"/><path d="M18 48h18M64 48h18M110 48h18M156 48h18M202 48h18" stroke="#ffd700" stroke-width="4"/></g></svg></div>
+            <div class="project-body"><h3>Energy Storage System Using Supercapacitor (ESSC)</h3><p>Semester project focused on fast-charge energy storage concepts using a supercapacitor-based arrangement.</p><div class="tags"><span>Energy Storage</span><span>Supercapacitor</span></div><button class="link-btn" onclick="openDetail('project-essc')">View Project →</button></div>
+          </article>
+
+          <article class="project-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="project-image"><img src="assets/img/fyp-cad.jpg" alt="CAD view of desalination system"><div class="project-overlay">DESIGN DEVELOPMENT</div></div>
+            <div class="project-body"><h3>Research Design & CAD Development</h3><p>Technical drawing and design development supporting the experimental desalination system.</p><div class="tags"><span>CAD</span><span>Fabrication</span></div><button class="link-btn" onclick="openDetail('project-cad')">View Details →</button></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section experience-section" id="experience">
-      <div class="container two-col">
+    <section class="section" id="experience">
+      <div class="container split">
         <div>
-          <div class="section-heading compact" data-reveal>
-            <div><span class="section-kicker">CAREER</span><h2>Professional Experience</h2></div>
-          </div>
+          <div class="section-heading" data-aos="fade-up"><div><span class="section-kicker">PROFESSIONAL EXPERIENCE</span><h2>Experience Timeline</h2><div class="accent-line"></div></div></div>
           <div class="timeline">
-            <article class="timeline-item" data-reveal><span class="dot"></span><div><time>Aug 2026 – Present</time><h3>MEP Engineer Mechanical</h3><p>Pro Building Designer, Pakistan</p><small>MEP & HVAC engineering · Revit BIM · coordination · documentation · QA/QC</small></div></article>
-            <article class="timeline-item" data-reveal><span class="dot"></span><div><time>Jul 2025 – May 2026</time><h3>Mechanical Engineer (HVAC)</h3><p>Orient Energy Pvt Ltd., Karachi</p><small>Maintenance planning · work orders · troubleshooting · controls · departmental coordination</small></div></article>
-            <article class="timeline-item" data-reveal><span class="dot"></span><div><time>Aug 2024 – Apr 2025</time><h3>Mechanical Engineer</h3><p>Shahnawaz Engineering Pvt Ltd., Karachi</p><small>Chiller operations · performance monitoring · maintenance · safety · energy efficiency</small></div></article>
-            <article class="timeline-item" data-reveal><span class="dot"></span><div><time>Jun 2023 – Sep 2023</time><h3>Application Engineer</h3><p>Cosmix Engineering, Karachi</p><small>HVAC support · equipment selection · load calculations · duct design · submittals · commissioning support</small></div></article>
-            <article class="timeline-item" data-reveal><span class="dot"></span><div><time>Jul 2022 – May 2023</time><h3>Mechanical Engineer</h3><p>Pakistan Railway PVT LTD, Pakistan</p><small>Inspection support · maintenance procedures · technical records · troubleshooting coordination</small></div></article>
+            <article class="timeline-item" data-aos="fade-up"><time>Aug 2026 - Present</time><h3>MEP Engineer Mechanical</h3><p>Pro Building Designer, Pakistan</p><button class="view-more" onclick="openDetail('exp-pbd')">View More →</button></article>
+            <article class="timeline-item" data-aos="fade-up"><time>Jul 2025 - May 2026</time><h3>Mechanical Engineer (HVAC)</h3><p>Orient Energy Pvt Ltd., Karachi</p><button class="view-more" onclick="openDetail('exp-orient')">View More →</button></article>
+            <article class="timeline-item" data-aos="fade-up"><time>Aug 2024 - Apr 2025</time><h3>Mechanical Engineer</h3><p>Shahnawaz Engineering Pvt Ltd., Karachi</p><button class="view-more" onclick="openDetail('exp-shahnawaz')">View More →</button></article>
+            <article class="timeline-item" data-aos="fade-up"><time>Jun 2023 - Sep 2023</time><h3>Application Engineer</h3><p>Cosmix Engineering, Karachi</p><button class="view-more" onclick="openDetail('exp-cosmix')">View More →</button></article>
+            <article class="timeline-item" data-aos="fade-up"><time>Jul 2022 - May 2023</time><h3>Mechanical Engineer</h3><p>Pakistan Railway PVT LTD, Pakistan</p><button class="view-more" onclick="openDetail('exp-railway')">View More →</button></article>
           </div>
         </div>
 
         <div id="education">
-          <div class="section-heading compact" data-reveal>
-            <div><span class="section-kicker">ACADEMIC</span><h2>Education</h2></div>
-          </div>
-          <div class="education-card" data-reveal>
-            <div class="edu-icon">🎓</div>
-            <div><h3>BSc Mechanical Engineering</h3><p>Hamdard University, Karachi, Pakistan</p><small>Final Year Project: Solar Powered Desalination System With Forced Air Bubbling Effects</small></div>
-          </div>
-          <div class="education-card" data-reveal>
-            <div class="edu-icon">📘</div>
-            <div><h3>FSc Pre-Engineering</h3><p>Faizan School &amp; College, Besham Shangla KPK</p></div>
-          </div>
-
-          <div class="capability-card" data-reveal>
-            <h3>Engineering Capability</h3>
-            <div class="capability-grid">
-              <span>Mechanical system design & analysis</span><span>HVAC, piping & MEP systems</span><span>Equipment installation & maintenance</span><span>Engineering drawings</span><span>BOQs, MTO & estimation</span><span>Site coordination & supervision</span><span>QA/QC documentation</span><span>Technical troubleshooting</span>
-            </div>
-          </div>
+          <div class="section-heading" data-aos="fade-up"><div><span class="section-kicker">EDUCATION</span><h2>Academic Foundation</h2><div class="accent-line"></div></div></div>
+          <article class="edu-card" data-aos="zoom-in"><h3>Bachelor in Mechanical Engineering</h3><p>Hamdard University, Karachi, Pakistan</p><small>Final Year Project: Solar Powered Desalination System With Forced Air Bubbling Effects</small><div class="edu-meta"><span>Mechanical Engineering</span><span>PEC Registered Graduate</span><span>Research Project</span></div><button class="btn btn-outline btn-small" onclick="openDetail('edu-hamdard')">View More</button></article>
+          <article class="edu-card" data-aos="zoom-in" data-aos-delay="100"><h3>FSc Pre-Engineering</h3><p>Faizan School &amp; College, Besham Shangla KPK</p><small>Pre-engineering foundation in Mathematics, Physics and Chemistry.</small><div class="edu-meta"><span>Mathematics</span><span>Physics</span><span>Chemistry</span></div><button class="btn btn-outline btn-small" onclick="openDetail('edu-fsc')">View More</button></article>
         </div>
       </div>
     </section>
 
     <section class="section section-light" id="credentials">
-      <div class="container credentials-grid">
-        <div class="credential-panel" data-reveal>
-          <div class="panel-heading"><div><span class="section-kicker">PROFESSIONAL</span><h2>Registration & Memberships</h2></div></div>
-          <div class="credential-item"><span class="credential-badge">PEC</span><div><h3>Pakistan Engineering Council</h3><p>Registered Mechanical Engineer · Reg. No. 059962 · 2025</p></div></div>
-          <div class="credential-item"><span class="credential-badge">IA</span><div><h3>IAENG</h3><p>International Association of Engineers · Registered Member · March 2026</p></div></div>
-          <div class="credential-item"><span class="credential-badge">AS</span><div><h3>ASME</h3><p>Membership · 2021 – Present</p></div></div>
-          <div class="credential-item"><span class="credential-badge">HU</span><div><h3>ASME-HU Chapter</h3><p>Hamdard University Chapter · 2022</p></div></div>
-        </div>
-
-        <div class="credential-panel cert-panel" data-reveal>
-          <div class="panel-heading"><div><span class="section-kicker">TRAINING</span><h2>Certifications</h2></div></div>
-          <ul class="cert-list">
-            <li><span>IEEE Certificate of Appreciation</span><time>Jul 2024</time></li>
-            <li><span>Introduction to ISO 45001:2018 Occupational Health & Safety Management System</span><time>Dec 2025</time></li>
-            <li><span>COSHH Risk Assessor Certification</span><time>Dec 2025</time></li>
-            <li><span>ISO 50001:2018 Energy Management System Awareness</span><time>Dec 2025</time></li>
-            <li><span>ISO 14001:2015 Environmental Management System Awareness</span><time>Dec 2025</time></li>
-            <li><span>AutoCAD Training Certificate</span><time>Feb 2024</time></li>
-            <li><span>Project Management Certificate</span><time>Feb 2024</time></li>
-            <li><span>Certificate in Information Technology</span><time>Jul 2015</time></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section conferences-section" id="conferences">
       <div class="container">
-        <div class="section-heading" data-reveal>
-          <div><span class="section-kicker">LEARNING & ENGAGEMENT</span><h2>Conferences, Seminars & Workshops</h2></div>
-          <p>Selected academic and professional development activities from the earlier Europass record.</p>
-        </div>
-        <div class="conference-grid">
-          <article class="conference-card" data-reveal><span>CFD</span><h3>Academic and Industrial Applications of Computational Fluid Dynamics</h3><p>ASME-HU Chapter · by Dr. Muhammad Sami</p></article>
-          <article class="conference-card" data-reveal><span>SW</span><h3>Hands-on Training Workshop on DS SOLIDWORKS</h3><p>ASME-HU Chapter · by Engr. Syed Raheel Zafar</p></article>
-          <article class="conference-card" data-reveal><span>W3</span><h3>Two-day Session on Web 3.0</h3><p>Hamdard University</p></article>
-          <article class="conference-card" data-reveal><span>MS</span><h3>International Scholarship Opportunities in Higher Education</h3><p>ASHRAE & EMBS Student Chapters · UET Lahore</p></article>
-          <article class="conference-card" data-reveal><span>EU</span><h3>International Education & Entrepreneurship for Pakistani Students in Europe</h3><p>MUST · Kamyab Jawan Markaz</p></article>
-          <article class="conference-card" data-reveal><span>SE</span><h3>Sustainable Energy Solutions for Future: Challenges and Opportunities</h3><p>NED University · Mechanical Engineering Department</p></article>
-        </div>
-      </div>
-    </section>
+        <div class="section-heading" data-aos="fade-up"><div><span class="section-kicker">CREDENTIALS</span><h2>Registration, Memberships & Certifications</h2><div class="accent-line"></div></div><p>Every credential has a focused detail view so the homepage stays clean while deeper information remains one click away.</p></div>
+        <div class="credential-grid">
+          <div class="credential-panel" data-aos="fade-right">
+            <h3>Registration & Memberships</h3>
+            <div class="credential-list">
+              <div class="credential-item"><span class="credential-icon">PEC</span><span><strong>Pakistan Engineering Council</strong><small>Registered Mechanical Engineer · 059962</small></span><button onclick="openDetail('pec')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">IA</span><span><strong>IAENG</strong><small>International Association of Engineers · 556597</small></span><button onclick="openDetail('iaeng')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">AS</span><span><strong>ASME Membership</strong><small>Mechanical engineering professional community</small></span><button onclick="openDetail('asme')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">HU</span><span><strong>ASME-HU Chapter</strong><small>Hamdard University Chapter</small></span><button onclick="openDetail('asme-hu')">See More</button></div>
+            </div>
+          </div>
 
-    <section class="section research-section" id="research">
-      <div class="container research-grid">
-        <div class="research-visual" data-reveal>
-          <img src="assets/img/monograph-cover.jpg" alt="Solar powered desalination academic monograph cover" />
-        </div>
-        <div class="research-copy" data-reveal>
-          <span class="section-kicker">RESEARCH & PUBLICATIONS</span>
-          <h2>Solar-Powered Desalination Research</h2>
-          <p>Research focused on a solar desalination system with forced-air bubbling, supported by design, mathematical modelling, fabrication, testing and performance evaluation.</p>
-          <div class="research-links">
-            <a class="research-link" href="assets/docs/Abdul_Murad_Academic_Monograph.pdf" target="_blank" rel="noopener"><strong>Academic Monograph</strong><small>Full academic book / portfolio research volume</small><span>Open PDF →</span></a>
-            <a class="research-link" href="assets/docs/Abdul_Murad_Research_Paper.pdf" target="_blank" rel="noopener"><strong>Research Paper</strong><small>Journal-format manuscript prepared from the research</small><span>Open PDF →</span></a>
-            <a class="research-link" href="assets/docs/Engr_Abdul_Murad_Professional_CV.pdf" target="_blank" rel="noopener"><strong>Professional CV</strong><small>Current master CV used for this portfolio</small><span>Open PDF →</span></a>
+          <div class="credential-panel" data-aos="fade-left">
+            <h3>Certifications</h3>
+            <div class="credential-list">
+              <div class="credential-item"><span class="credential-icon">IEEE</span><span><strong>IEEE Certificate of Appreciation</strong><small>July 2024</small></span><button onclick="openDetail('cert-ieee')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">45</span><span><strong>ISO 45001:2018 Awareness</strong><small>Occupational Health & Safety</small></span><button onclick="openDetail('cert-45001')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">CR</span><span><strong>COSHH Risk Assessor</strong><small>Hazardous substances awareness</small></span><button onclick="openDetail('cert-coshh')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">50</span><span><strong>ISO 50001:2018 Awareness</strong><small>Energy Management</small></span><button onclick="openDetail('cert-50001')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">14</span><span><strong>ISO 14001:2015 Awareness</strong><small>Environmental Management</small></span><button onclick="openDetail('cert-14001')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">AC</span><span><strong>AutoCAD Training</strong><small>Technical drafting</small></span><button onclick="openDetail('cert-autocad')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">PM</span><span><strong>Project Management Certificate</strong><small>Great Learning</small></span><button onclick="openDetail('cert-pm')">See More</button></div>
+              <div class="credential-item"><span class="credential-icon">IT</span><span><strong>Information Technology Certificate</strong><small>Hi-Tech Institute of Technology</small></span><button onclick="openDetail('cert-it')">See More</button></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section about-section" id="about">
-      <div class="container about-grid">
-        <div data-reveal>
-          <span class="section-kicker">ABOUT</span>
-          <h2>Engineering With Practical Coordination in Mind</h2>
-          <p>My work spans MEP/HVAC engineering, Revit BIM modelling, technical drawings, maintenance and troubleshooting, coordination, QA/QC and sustainable engineering research. I am particularly interested in efficient building systems, engineering documentation and practical technical problem-solving.</p>
+    <section class="section" id="conferences">
+      <div class="container">
+        <div class="section-heading" data-aos="fade-up"><div><span class="section-kicker">CONFERENCES · SEMINARS · WORKSHOPS</span><h2>Continuous Learning</h2><div class="accent-line"></div></div><p>Scroll horizontally to explore selected technical, academic and career-development sessions.</p></div>
+        <div class="conference-strip">
+          <article class="conference-card" data-aos="fade-up"><span class="year">CFD SEMINAR</span><h3>Academic and Industrial Applications of CFD</h3><p>ASME-HU Chapter · Dr. Muhammad Sami</p><button onclick="openDetail('conf-cfd')">See More →</button></article>
+          <article class="conference-card" data-aos="fade-up" data-aos-delay="70"><span class="year">WORKSHOP</span><h3>Hands-on Training on DS SOLIDWORKS</h3><p>ASME-HU Chapter · Engr. Syed Raheel Zafar</p><button onclick="openDetail('conf-solidworks')">See More →</button></article>
+          <article class="conference-card" data-aos="fade-up" data-aos-delay="140"><span class="year">WEB 3.0</span><h3>Two-Day Session on Web 3.0</h3><p>Hamdard University</p><button onclick="openDetail('conf-web3')">See More →</button></article>
+          <article class="conference-card" data-aos="fade-up"><span class="year">SCHOLARSHIPS</span><h3>International Scholarship Opportunities in Higher Education</h3><p>ASHRAE & EMBS Student Chapters · UET Lahore</p><button onclick="openDetail('conf-scholarship')">See More →</button></article>
+          <article class="conference-card" data-aos="fade-up" data-aos-delay="70"><span class="year">EUROPE</span><h3>International Education & Entrepreneurship</h3><p>MUST · Kamyab Jawan Markaz</p><button onclick="openDetail('conf-europe')">See More →</button></article>
+          <article class="conference-card" data-aos="fade-up" data-aos-delay="140"><span class="year">ENERGY</span><h3>Sustainable Energy Solutions for Future</h3><p>NED University · Mechanical Engineering</p><button onclick="openDetail('conf-energy')">See More →</button></article>
         </div>
-        <div class="about-stats" data-reveal>
-          <div><strong>PEC</strong><span>Registered Mechanical Engineer</span></div>
-          <div><strong>5</strong><span>Professional roles listed in current CV</span></div>
-          <div><strong>8</strong><span>Current certificates / training records</span></div>
-          <div><strong>3</strong><span>Separated academic project categories</span></div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="research">
+      <div class="container research-grid">
+        <div data-aos="zoom-in"><div class="book-cover"><img src="assets/img/monograph-cover.jpg" alt="Solar Powered Desalination academic monograph cover"></div></div>
+        <div data-aos="fade-left">
+          <div class="section-heading" style="margin-bottom:24px"><div><span class="section-kicker">RESEARCH & PUBLICATIONS</span><h2>Solar-Powered Desalination Research</h2><div class="accent-line"></div></div></div>
+          <p style="color:#aac0d7;line-height:1.75">Research focused on a solar desalination system with forced-air bubbling, supported by design, mathematical modelling, fabrication, testing and performance evaluation.</p>
+          <div class="research-card"><span><strong>Academic Monograph</strong><small>Portfolio research volume and structured academic presentation</small></span><button onclick="openDetail('research-monograph')">Read Summary →</button></div>
+          <div class="research-card"><span><strong>Research Paper</strong><small>Journal-format manuscript prepared from the research</small></span><button onclick="openDetail('research-paper')">Read Summary →</button></div>
+          <div class="research-card"><span><strong>Professional CV</strong><small>Current career profile used for this portfolio</small></span><button onclick="openDetail('cv')">View Profile →</button></div>
+          <div class="privacy-note">Public GitHub links to the full PDFs have been removed from the page. This portfolio presents readable summaries and can later connect to a controlled viewer if you choose a restricted document host.</div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" id="contact">
-    <div class="container footer-grid">
-      <div>
-        <span class="section-kicker light">CONTACT</span>
-        <h2>Let’s Work Together</h2>
-        <p>Open to professional, research and graduate-study opportunities in mechanical engineering, HVAC/MEP, BIM and sustainable engineering.</p>
-      </div>
-      <div class="contact-list">
-        <a href="mailto:muradjehan21@gmail.com"><span>✉</span> muradjehan21@gmail.com</a>
-        <a href="tel:+923411275751"><span>☎</span> +92 341 1275751</a>
-        <a href="https://www.linkedin.com/in/murad-10" target="_blank" rel="noopener"><span>in</span> linkedin.com/in/murad-10</a>
-        <span><span>⌖</span> Shangla, KPK, Pakistan</span>
-      </div>
+  <footer class="contact-band" id="contact">
+    <div class="container contact-grid">
+      <div><h2>Let's Work Together</h2><p>Open to opportunities in HVAC, MEP/BIM, research, sustainable engineering and technical coordination.</p><div class="contact-links"><a class="contact-pill" href="mailto:muradjehan21@gmail.com">muradjehan21@gmail.com</a><a class="contact-pill" href="tel:+923411275751">+92 341 1275751</a><a class="contact-pill" href="https://www.linkedin.com/in/murad-10" target="_blank" rel="noopener">LinkedIn /murad-10</a><span class="contact-pill">Shangla KPK, Pakistan</span></div></div>
       <a class="btn btn-gold" href="mailto:muradjehan21@gmail.com">Get in Touch</a>
     </div>
-    <div class="container footer-bottom"><span>© <span id="year"></span> Engr. Abdul Murad. Professional Portfolio.</span><a href="#top">Back to top ↑</a></div>
   </footer>
 
-  <script src="script.js"></script>
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><div><strong id="modalTitle">Details</strong><small id="modalSubtitle"></small></div><button class="modal-close" onclick="closeModal()">×</button></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-overlay" onclick="closeProjectIndex()"></div>
+    <div class="modal-panel full" role="dialog" aria-modal="true">
+      <div class="modal-head"><div><strong>Project Portfolio</strong><small>Numbered list - select a project for its dedicated detail view</small></div><button class="modal-close" onclick="closeProjectIndex()">×</button></div>
+      <div class="modal-body"><div class="project-index" id="projectIndex"></div></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copied</div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({duration:760,once:true,offset:70,easing:'ease-out-cubic'});
+
+    const menuToggle=document.getElementById('menuToggle');
+    const mainNav=document.getElementById('mainNav');
+    menuToggle.addEventListener('click',()=>mainNav.classList.toggle('open'));
+    mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mainNav.classList.remove('open')));
+
+    // Opening typewriter animation
+    const typeTarget=document.getElementById('typeName');
+    const typeText='Engr. Abdul Murad';
+    let typeIndex=0;
+    function typeName(){
+      if(typeIndex<typeText.length){typeTarget.textContent+=typeText[typeIndex++];setTimeout(typeName,78)}
+      else{setTimeout(()=>document.querySelector('.eyebrow').classList.add('typed-done'),250)}
+    }
+    setTimeout(typeName,250);
+
+    // Animated counters
+    const counterObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const el=entry.target,target=Number(el.dataset.count);let n=0;const step=Math.max(1,Math.ceil(target/28));
+          const timer=setInterval(()=>{n=Math.min(target,n+step);el.textContent=n+'+';if(n>=target)clearInterval(timer)},55);
+          counterObserver.unobserve(el);
+        }
+      })
+    },{threshold:.5});
+    document.querySelectorAll('[data-count]').forEach(el=>counterObserver.observe(el));
+
+    const details={
+      pec:{title:'Pakistan Engineering Council (PEC)',sub:'Registered Mechanical Engineer · Reg. No. 059962',items:['Professional registration as a Mechanical Engineer in Pakistan.','Registration number presented on this portfolio: 059962.','Supports professional identity, engineering accountability and formal registration status.','Used here as a credential summary; official verification remains with the issuing council.']},
+      iaeng:{title:'IAENG Membership',sub:'International Association of Engineers · Membership No. 556597',items:['Member of the International Association of Engineers (IAENG).','Membership number presented for this portfolio: 556597.','Professional value: international research exposure, technical networking and engineering community participation.','Portfolio record notes active international participation and continuing professional networking.']},
+      hvac:{title:'HVAC Design & Simulation',sub:'Load calculations · duct sizing · VRF/VRV · HAP-oriented workflow',items:['HVAC load estimation and system selection for building services applications.','Duct sizing, airflow distribution and coordination with architectural/MEP constraints.','Equipment selection for chillers, AHUs, FCUs and ducted systems.','Energy-conscious system thinking, commissioning support and performance troubleshooting.']},
+      iso:{title:'ISO Standards Awareness',sub:'Management-system awareness relevant to safety, energy and environment',items:['ISO 45001:2018 awareness for occupational health and safety management.','ISO 50001:2018 awareness for energy management systems.','ISO 14001:2015 awareness for environmental management systems.','Standards knowledge is used as a framework for disciplined engineering documentation and risk awareness.']},
+      asme:{title:'ASME Codes & Professional Community',sub:'Mechanical engineering standards and professional learning',items:['ASME-oriented awareness of mechanical engineering codes and professional practice.','Useful context for pressure equipment, piping, materials and design documentation.','Membership supports continued technical learning and exposure to global mechanical engineering practice.','ASME-HU chapter participation provided additional academic and volunteer engagement.']},
+      revit:{title:'Revit MEP',sub:'BIM modelling · coordination · documentation',items:['MEP modelling for building systems and technical documentation.','Revit families, views, schedules and as-built/renovation updates.','Coordination of architectural and MEP information in BIM workflows.','Clash coordination, scan-to-BIM support and model-based drawing production.']},
+      qc:{title:'Quality Control (QC)',sub:'Inspection · testing · documentation',items:['Inspection-focused checks against project requirements and technical documentation.','Tracking of maintenance, test and site information to support traceability.','Awareness of NDT, pressure testing, material control and QA/QC documentation.','Focus on finding nonconformities before they propagate into downstream work.']},
+      qa:{title:'Quality Assurance (QA)',sub:'Process improvement · standards implementation',items:['Process-oriented thinking to reduce repeat errors and improve consistency.','Use of standards, procedures and documentation as preventive controls.','Coordination between engineering, site and documentation activities.','Supports repeatable workflows, clearer handoffs and evidence-based review.']},
+      ashrae:{title:'ASHRAE Knowledge Area',sub:'HVAC standards · energy efficiency · ventilation design',items:['ASHRAE-based design awareness for HVAC system sizing and performance.','Ventilation, thermal comfort and energy-efficiency considerations in building systems.','Used as a technical reference context for load calculations and equipment selection.','Portfolio includes participation in an international scholarship seminar organized by ASHRAE/EMBS student chapters.']},
+      bim:{title:'BIM Coordination',sub:'MEP coordination · existing conditions · clash review',items:['Coordination between architectural, mechanical and other MEP information.','Existing-building documentation and renovation/as-built updates.','Model organization using views, schedules and coordinated drawing outputs.','BIM workflow supports issue visibility before site execution.']},
+      solidworks:{title:'SolidWorks',sub:'3D parametric modelling · assemblies · drawings',items:['3D parametric modelling of parts and mechanical assemblies.','2D drawing extraction from 3D models.','Assembly relationships and basic motion-study workflows.','Hands-on workshop exposure through ASME-HU technical training.']},
+      pm:{title:'Project Coordination',sub:'Planning · documentation · site follow-up',items:['Coordination of work orders, technical requests and cross-department tasks.','Support for BOQs, MTOs, cost estimation and technical submittals.','Documentation follow-up across maintenance, HVAC and BIM/MEP workflows.','Site communication, scheduling awareness and issue tracking.']},
+      autocad:{title:'AutoCAD MEP',sub:'Technical drafting & engineering documentation',items:['2D technical drawing updates and engineering documentation.','MEP layouts, ductwork and coordination drawings.','As-built and renovation drawing support.','Training certificate completed through Virtual University Islamabad.']},
+      bim360:{title:'BIM 360 Collaboration',sub:'Cloud-based BIM collaboration',items:['Structured sharing and review of coordinated BIM information.','Supports team visibility of drawings, models and issue workflows.','Useful for coordination between modelling, review and project stakeholders.','Complements Revit-based MEP documentation and coordination practice.']},
+
+      'project-fyp':{title:'Solar Powered Desalination with Forced-Air Bubbling',sub:'Final Year Research · Learning View',items:['Problem: improve solar-still productivity using forced-air bubbling while keeping the system low-cost and experimentally testable.','What I learned: how thermal behaviour, evaporation, condensation and airflow interact in a coupled physical system.','Technologies used: solar-still fabrication, aeration/bubbling concept, CAD, instrumentation, data logging and mathematical modelling.','Research method: compare conventional and aerated operation under field conditions while recording environmental and system variables.','Results: evaluate productivity, temperature response and economic implications using the project\'s measured experimental data.','Engineering outcome: connect design assumptions with fabrication realities, testing discipline and evidence-based conclusions.']},
+      'project-tracker':{title:'Solar Tracker System',sub:'Semester Project',items:['Objective: orient a solar panel toward stronger available sunlight during the day.','Components: panel mount, simple frame, sensing/control concept and actuation logic.','My role: mechanical concept development, assembly thinking and presentation of the operating idea.','Learning: basic solar geometry, mechanical alignment, motion constraints and energy-harvesting trade-offs.']},
+      'project-home':{title:'Smart Solar Home System',sub:'Semester Project',items:['Objective: demonstrate a small home energy concept using solar generation and controlled electrical loads.','Components: solar source, household-load concept, basic monitoring/control logic and energy flow representation.','My role: system concept, engineering presentation and integration of mechanical/energy thinking.','Learning: load prioritization, renewable integration and how a system behaves as an interconnected whole.']},
+      'project-essc':{title:'Energy Storage System Using Supercapacitor (ESSC)',sub:'Semester Project',items:['Objective: study fast-charge energy storage using a supercapacitor-based configuration.','Components: supercapacitor bank concept, charging path, load path and basic protection/measurement thinking.','My role: engineering concept development, system explanation and project presentation.','Learning: charge/discharge behaviour, power density, energy-storage trade-offs and practical limitations.']},
+      'project-cad':{title:'Research Design & CAD Development',sub:'Solar desalination system',items:['Converted experimental requirements into a buildable geometry and component arrangement.','Used CAD views to communicate basin, cover, aeration and supporting geometry.','Supported fabrication planning by clarifying dimensions, interfaces and spatial relationships.','Linked the design model with the physical prototype used for testing.']},
+      'ieee-volunteer':{title:'IEEE Funded Volunteer Project',sub:'Project #22-HAC-144 · Community Service',items:['Project: Combating Disability Through Training of Independent Living for Physically Challenged Persons.','Role: volunteer support for a funded community-focused initiative in Karachi.','Contribution: event/service support, coordination and participation in activities aimed at independent-living skills.','Learning: empathy-driven teamwork, inclusive service, communication and responsibility beyond technical engineering work.']},
+
+      'exp-pbd':{title:'MEP Engineer Mechanical',sub:'Pro Building Designer · Aug 2026 - Present',items:['MEP and HVAC engineering support across coordinated building-model workflows.','Revit BIM modelling, families, views, schedules and technical documentation.','Architectural and MEP coordination with attention to system interfaces.','HVAC ductwork and air-distribution modelling/documentation.','Existing-building documentation, renovation and as-built updates, including scan-to-BIM support.','MEP QA/QC, clash coordination and AutoCAD drawing updates.']},
+      'exp-orient':{title:'Mechanical Engineer (HVAC)',sub:'Orient Energy Pvt Ltd. · Jul 2025 - May 2026',items:['Planned, assigned and reviewed maintenance activities while maintaining technical records.','Issued and tracked work orders and work requests for operational follow-up.','Participated in technical meetings and training related to maintenance activities.','Checked and troubleshot equipment and adjusted controls where required.','Coordinated with departments and arranged replacement parts to maintain workflow continuity.','Reported completed and outstanding work to management for follow-up.']},
+      'exp-shahnawaz':{title:'Mechanical Engineer',sub:'Shahnawaz Engineering Pvt Ltd. · Aug 2024 - Apr 2025',items:['Monitored operating temperature, pressure and flow-rate parameters.','Adjusted chilled-water supply temperatures to support stable operation.','Supported water-treatment and chemistry monitoring for plant reliability.','Performed routine maintenance including cleaning, lubrication and checks.','Troubleshot leaks, alarms and equipment malfunctions while following safety protocols.','Recorded operating data and supported performance optimization for energy efficiency.']},
+      'exp-cosmix':{title:'Application Engineer',sub:'Cosmix Engineering · Jun 2023 - Sep 2023',items:['Provided HVAC technical support and product-selection assistance to clients and consultants.','Performed load calculations and supported duct layout, sizing and air-distribution design.','Prepared shop drawings, BOQs, technical submittals and equipment proposals.','Supported selection of chillers, AHUs, FCUs and ducted systems.','Conducted site visits for installation supervision and commissioning support.','Assisted performance testing and energy-efficiency optimization for HVAC systems.']},
+      'exp-railway':{title:'Mechanical Engineer',sub:'Pakistan Railway PVT LTD · Jul 2022 - May 2023',items:['Assisted inspection and condition monitoring of mechanical equipment.','Followed maintenance procedures and safety requirements.','Maintained maintenance logs and technical documentation.','Coordinated with technical teams during troubleshooting and repair activities.','Supported spare-parts tracking and inventory control.','Developed practical understanding of maintenance discipline in an operating engineering environment.']},
+
+      'edu-hamdard':{title:'Mechanical Engineering Education',sub:'Hamdard University · Karachi, Pakistan',items:['Degree focus: Mechanical Engineering with a final-year research project in solar-powered desalination.','Core portfolio subjects include engineering mechanics, thermodynamics, fluid mechanics, heat transfer, machine design, manufacturing, materials, CAD, controls, HVAC/refrigeration, energy systems, engineering economics and project management.','Final Year Project integrated design, mathematical modelling, fabrication, testing and performance evaluation.','Hamdard University states that its Mechanical Engineering program is prepared in accordance with PEC guidelines and its program page describes OBE Level-II accreditation status for stated intakes.','This portfolio presents the degree as an academic summary; official transcript/accreditation documents remain the authoritative source for exact subject lists and intake-year coverage.','Professional progression after graduation includes PEC registration and continuing technical certifications.']},
+      'edu-fsc':{title:'FSc Pre-Engineering',sub:'Faizan School & College · Besham Shangla KPK',items:['Pre-engineering foundation focused on Mathematics, Physics and Chemistry.','Built the analytical base required for undergraduate engineering studies.','Strengthened numerical problem solving and scientific reasoning.','Prepared for formal Mechanical Engineering education and technical coursework.']},
+
+      'asme-hu':{title:'ASME-HU Chapter',sub:'Hamdard University Chapter',items:['Participated in university-level ASME chapter activities.','Exposure to seminars, technical workshops and volunteer coordination.','Supported professional development outside formal classroom learning.','Helped build technical communication and community participation.']},
+      'cert-ieee':{title:'IEEE Certificate of Appreciation',sub:'July 2024',items:['Recognition connected to volunteer service on IEEE-funded Project #22-HAC-144.','Acknowledges contribution to a community-centered independent-living training initiative.','Demonstrates service participation beyond technical coursework.','Linked in this portfolio to the dedicated IEEE volunteer project section.']},
+      'cert-45001':{title:'ISO 45001:2018 Awareness',sub:'The Knights Academy of Safety · Dec 2025',items:['Introduced occupational health and safety management-system principles.','Strengthened awareness of hazards, controls and structured safety processes.','Relevant to engineering site, maintenance and project environments.','Supports a prevention-focused approach to technical work.']},
+      'cert-coshh':{title:'COSHH Risk Assessor Certification',sub:'The Knights Academy of Safety · Dec 2025',items:['Focused on awareness of hazardous substances and associated risks.','Reinforced the importance of identifying exposure pathways and control measures.','Relevant to maintenance, industrial and workshop environments.','Supports safer planning and documentation around chemical hazards.']},
+      'cert-50001':{title:'ISO 50001:2018 Energy Management Awareness',sub:'The Knights Academy of Safety · Dec 2025',items:['Introduced systematic energy-management principles.','Supports monitoring and improvement of energy performance.','Directly relevant to HVAC efficiency, chiller performance and sustainable engineering.','Reinforces data-based thinking around consumption and efficiency.']},
+      'cert-14001':{title:'ISO 14001:2015 Environmental Management Awareness',sub:'The Knights Academy of Safety · Dec 2025',items:['Introduced environmental-management system concepts.','Supports identification of environmental aspects and structured controls.','Relevant to sustainable engineering, maintenance and project planning.','Connects engineering decisions with broader environmental responsibility.']},
+      'cert-autocad':{title:'AutoCAD Training Certificate',sub:'Virtual University Islamabad · Feb 2024',items:['Formal training in AutoCAD-based technical drafting.','Supports engineering drawing production and revision workflows.','Relevant to MEP/HVAC layouts, as-built updates and documentation.','Complements Revit-based BIM modelling skills.']},
+      'cert-pm':{title:'Project Management Certificate',sub:'Great Learning · Feb 2024',items:['Introduced planning, scope, scheduling and stakeholder-management concepts.','Supports coordination of tasks, documentation and follow-up.','Useful for engineering projects with cross-functional activities.','Complements site, application-engineering and BIM coordination experience.']},
+      'cert-it':{title:'Certificate in Information Technology',sub:'Hi-Tech Institute of Technology, Mansehra · Jul 2015',items:['Built an early foundation in general computing and digital tools.','Supported later engineering use of Microsoft Office and technical software.','Improved comfort with documentation, file handling and computer-based workflows.','Forms part of the broader digital-skills foundation shown in this portfolio.']},
+
+      'conf-cfd':{title:'Academic and Industrial Applications of CFD',sub:'ASME-HU Chapter · Dr. Muhammad Sami',items:['Connected CFD concepts with academic and industrial engineering applications.','Reinforced the role of fluid-flow simulation in design and analysis.','Supported interest in thermal sciences, airflow and computational methods.','Included volunteer contribution and technical-event participation.']},
+      'conf-solidworks':{title:'Hands-on Training Workshop on DS SOLIDWORKS',sub:'ASME-HU Chapter · Engr. Syed Raheel Zafar',items:['Practised sketching and 3D parametric modelling.','Developed parts and mechanical assemblies in a CAD environment.','Explored 2D drawing creation from 3D models.','Introduced assembly relationships and motion-study concepts.']},
+      'conf-web3':{title:'Two-Day Session on Web 3.0',sub:'Hamdard University',items:['Introduced emerging Web 3.0 concepts beyond the traditional web stack.','Included perspectives on blockchain, professional services and emerging technologies.','Expanded awareness of digital transformation outside core mechanical engineering.','Demonstrated interest in interdisciplinary technology trends.']},
+      'conf-scholarship':{title:'International Scholarship Opportunities in Higher Education',sub:'ASHRAE & EMBS Student Chapters · UET Lahore',items:['Explored pathways for international higher-education opportunities.','Highlighted scholarship-search and application awareness.','Connected professional student chapters with postgraduate development.','Relevant to current goals for advanced study and international academic progression.']},
+      'conf-europe':{title:'International Education & Entrepreneurship for Pakistani Students in Europe',sub:'MUST · Kamyab Jawan Markaz',items:['Explored education pathways for international students in Europe.','Discussed career perspectives and broader student-development opportunities.','Connected academic planning with entrepreneurship and professional growth.','Expanded awareness of international study environments.']},
+      'conf-energy':{title:'Sustainable Energy Solutions for Future',sub:'NED University · Mechanical Engineering',items:['Explored future-facing energy challenges and engineering opportunities.','Connected sustainability with mechanical and energy-system design.','Supported interest in renewable energy and energy efficiency.','Reinforced the relevance of research-led engineering solutions.']},
+
+      'research-monograph':{title:'Academic Monograph',sub:'Solar-Powered Desalination with Forced-Air Bubbling',items:['Structured academic presentation of the research journey from design to testing.','Brings together mathematical modelling, fabrication logic, experiment planning and performance interpretation.','Designed as a portfolio-ready scholarly work sample for academic discussions.','Full document access is not linked publicly from this GitHub portfolio.']},
+      'research-paper':{title:'Research Paper',sub:'Journal-format manuscript prepared from the desalination research',items:['Condenses the FYP into a journal-style structure with abstract, methods, results, discussion and conclusion.','Keeps the research focus on forced-air bubbling and the measured experimental study.','Prepared as a publication-development document and academic writing sample.','Full document access is intentionally not linked publicly from this GitHub portfolio.']},
+      cv:{title:'Professional CV Profile',sub:'Public summary - full document not linked for download',items:['Mechanical Engineer with HVAC, MEP/BIM, maintenance, application-engineering and QA/QC experience.','Current role: MEP Engineer Mechanical at Pro Building Designer.','PEC Registered Mechanical Engineer · Registration No. 059962.','Core tools: AutoCAD MEP, Revit MEP, BIM 360, SolidWorks and Microsoft Office.','Professional interests include HVAC design, energy efficiency, sustainable engineering and research.','For formal applications, the full CV can be shared directly by email rather than exposed as a public download.']}
+    };
+
+    const projects=[
+      ['01','Solar Powered Desalination with Forced-Air Bubbling','Final Year Research','project-fyp'],
+      ['02','Solar Tracker System','Semester Project','project-tracker'],
+      ['03','Smart Solar Home System','Semester Project','project-home'],
+      ['04','Energy Storage System Using Supercapacitor (ESSC)','Semester Project','project-essc'],
+      ['05','IEEE Funded Volunteer Project #22-HAC-144','Volunteer Project','ieee-volunteer'],
+      ['06','Research Design & CAD Development','Technical Project','project-cad']
+    ];
+
+    function openDetail(key){
+      const data=details[key]; if(!data) return;
+      document.getElementById('modalTitle').textContent=data.title;
+      document.getElementById('modalSubtitle').textContent=data.sub||'';
+      document.getElementById('modalBody').innerHTML='<ul class="detail-list">'+data.items.map(i=>'<li>'+i+'</li>').join('')+'</ul>'+(key==='edu-hamdard'?'<div class="modal-note">Accreditation note: Hamdard University\'s Mechanical Engineering program page states that the program is prepared according to PEC guidelines and describes OBE Level-II accreditation for specified intake batches. Verify your exact intake-year coverage from official university/PEC records when using this for formal applications.</div>':'');
+      document.getElementById('detailModal').classList.add('open');document.getElementById('detailModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    }
+    function closeModal(){document.getElementById('detailModal').classList.remove('open');document.getElementById('detailModal').setAttribute('aria-hidden','true');document.body.style.overflow=''}
+
+    function openProjectIndex(){
+      const box=document.getElementById('projectIndex');
+      box.innerHTML=projects.map(p=>`<button onclick="closeProjectIndex();setTimeout(()=>openDetail('${p[3]}'),160)"><span class="project-num">${p[0]}</span><span><strong>${p[1]}</strong><small>${p[2]}</small></span></button>`).join('');
+      document.getElementById('projectModal').classList.add('open');document.body.style.overflow='hidden';
+    }
+    function closeProjectIndex(){document.getElementById('projectModal').classList.remove('open');document.body.style.overflow=''}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeProjectIndex()}});
+
+    // Active nav
+    const sections=[...document.querySelectorAll('main section[id],footer[id]')];
+    const navLinks=[...document.querySelectorAll('.main-nav a')];
+    const navObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -48% 0px'});
+    sections.forEach(s=>navObserver.observe(s));
+  </script>
 </body>
 </html>
