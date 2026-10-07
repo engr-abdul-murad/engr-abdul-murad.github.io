@@ -622,7 +622,7 @@
       const data=details[key]; if(!data) return;
       document.getElementById('modalTitle').textContent=data.title;
       document.getElementById('modalSubtitle').textContent=data.sub||'';
-      document.getElementById('modalBody').innerHTML='<ul class="detail-list">'+data.items.map(i=>'<li>'+i+'</li>').join('')+'</ul>'+(key==='edu-hamdard'?'<div class="modal-note">Accreditation note: Hamdard University\'s Mechanical Engineering program page states that the program is prepared according to PEC guidelines and describes OBE Level-II accreditation for specified intake batches. Verify your exact intake-year coverage from official university/PEC records when using this for formal applications.</div>':'');
+      document.getElementById('modalBody').innerHTML='<ul class="detail-list">'+data.items.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
       document.getElementById('detailModal').classList.add('open');document.getElementById('detailModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
     }
     function closeModal(){document.getElementById('detailModal').classList.remove('open');document.getElementById('detailModal').setAttribute('aria-hidden','true');document.body.style.overflow=''}
