@@ -127,3 +127,31 @@ button,input{font:inherit}
   position:relative;
   z-index:2;
 }
+.hero{
+  position:relative !important;
+  overflow:hidden !important;
+  background:#071827 !important;
+  isolation:isolate;
+}
+
+.hero::before{
+  display:none !important;
+}
+
+.hero-blueprint-bg{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  opacity:.58 !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+}
+
+.hero .hero-grid,
+.hero .hero-stats{
+  position:relative !important;
+  z-index:2 !important;
+}
