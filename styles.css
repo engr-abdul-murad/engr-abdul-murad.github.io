@@ -213,3 +213,232 @@ button,input{font:inherit}
     stroke-dashoffset:-100;
   }
 }
+/* PEC Certificates */
+#pec-certificates-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.pec-certificate-card{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-align:left;
+  padding:16px 18px;
+  border:1px solid rgba(15,47,74,.12);
+  border-radius:16px;
+  background:#fff;
+  color:#102238;
+  cursor:pointer;
+  transition:.25s ease;
+  box-shadow:0 8px 24px rgba(15,47,74,.06);
+}
+
+.pec-certificate-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(15,47,74,.12);
+  border-color:rgba(200,155,43,.55);
+}
+
+.pec-card-icon{
+  width:46px;
+  height:46px;
+  flex:0 0 46px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:#0f2f4a;
+  color:#f4c430;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+.pec-card-content{
+  flex:1;
+  min-width:0;
+}
+
+.pec-card-content strong{
+  display:block;
+  font-size:14px;
+  line-height:1.35;
+  color:#102238;
+  margin-bottom:5px;
+}
+
+.pec-card-content small{
+  display:block;
+  font-size:12px;
+  color:#6b7f95;
+}
+
+.pec-card-more{
+  flex:0 0 auto;
+  font-size:12px;
+  font-weight:800;
+  color:#0f5f78;
+  white-space:nowrap;
+}
+
+/* PEC Modal */
+.pec-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.pec-modal.open{
+  display:flex;
+}
+
+.pec-modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(5,18,32,.82);
+  backdrop-filter:blur(8px);
+}
+
+.pec-modal-panel{
+  position:relative;
+  z-index:1;
+  width:min(1180px,96vw);
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.pec-modal-close{
+  position:absolute;
+  top:14px;
+  right:16px;
+  z-index:3;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#0f2f4a;
+  color:#fff;
+  font-size:26px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.pec-modal-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);
+  gap:0;
+}
+
+.pec-modal-image-wrap{
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  background:#eef3f7;
+}
+
+.pec-modal-image{
+  width:100%;
+  height:auto;
+  max-height:76vh;
+  object-fit:contain;
+  border-radius:10px;
+  box-shadow:0 14px 40px rgba(15,47,74,.16);
+}
+
+.pec-modal-details{
+  padding:48px 36px 36px;
+}
+
+.pec-modal-kicker{
+  display:inline-block;
+  margin-bottom:12px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  color:#c89b2b;
+}
+
+.pec-modal-title{
+  margin:0 0 20px;
+  color:#102238;
+  font-size:28px;
+  line-height:1.2;
+}
+
+.pec-modal-meta{
+  padding:16px 18px;
+  margin-bottom:24px;
+  border-radius:14px;
+  background:#f5f8fb;
+  border:1px solid #e3eaf0;
+}
+
+.pec-modal-meta p{
+  margin:5px 0;
+  color:#52667a;
+  font-size:14px;
+}
+
+.pec-modal-details h4{
+  margin:0 0 12px;
+  color:#102238;
+  font-size:18px;
+}
+
+.pec-modal-learning{
+  margin:0;
+  padding-left:20px;
+}
+
+.pec-modal-learning li{
+  margin-bottom:10px;
+  color:#52667a;
+  line-height:1.55;
+}
+
+@media (max-width:900px){
+  #pec-certificates-list{
+    grid-template-columns:1fr;
+  }
+
+  .pec-modal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .pec-modal-image-wrap{
+    min-height:auto;
+  }
+
+  .pec-modal-details{
+    padding:30px 22px 28px;
+  }
+}
+
+@media (max-width:600px){
+  .pec-certificate-card{
+    align-items:flex-start;
+  }
+
+  .pec-card-more{
+    display:none;
+  }
+
+  .pec-modal{
+    padding:10px;
+  }
+
+  .pec-modal-title{
+    font-size:22px;
+  }
+}
