@@ -44,7 +44,8 @@ function updateProgress() {
 window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 // PEC Certificates Loader
 document.addEventListener('DOMContentLoaded', async () => {
   const container = document.getElementById('pec-certificates-list');
