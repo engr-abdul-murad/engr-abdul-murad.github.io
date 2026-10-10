@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('PEC certificates error:', error);
   }
 });
-
 function openPecCertificate(cert) {
   let modal = document.getElementById('pecCertificateModal');
 
