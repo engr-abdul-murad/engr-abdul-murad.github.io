@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const certificates = await response.json();
 
     container.innerHTML = '';
-
+certificates.sort((a, b) => new Date(b.date) - new Date(a.date));
     certificates.forEach((cert, index) => {
       const card = document.createElement('button');
       card.type = 'button';
