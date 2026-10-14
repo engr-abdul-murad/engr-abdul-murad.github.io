@@ -714,3 +714,15 @@ button,input{font:inherit}
 
   background:rgba(243,186,60,0.14) !important;
 }
+/* Final cleaner gold portrait tone */
+.portrait-frame{
+  background:rgba(243,186,60,0.30) !important;
+}
+
+.portrait-frame img{
+  background:rgba(243,186,60,0.16) !important;
+}
+
+.portrait-inner{
+  background:rgba(243,186,60,0.18) !important;
+}
