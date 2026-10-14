@@ -462,3 +462,32 @@ button,input{font:inherit}
   clip-path:none !important;
   display:block !important;
 }
+/* Remove outer hexagon and make full profile frame circular */
+.portrait-frame{
+  width:180px !important;
+  height:180px !important;
+  border-radius:50% !important;
+  clip-path:none !important;
+  overflow:hidden !important;
+  padding:4px !important;
+  background:#f3ba3c !important;
+}
+
+.portrait-inner{
+  width:100% !important;
+  height:100% !important;
+  border-radius:50% !important;
+  overflow:hidden !important;
+  clip-path:none !important;
+  background:#fff !important;
+}
+
+.portrait-inner img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:50% 30% !important;
+  border-radius:50% !important;
+  clip-path:none !important;
+  display:block !important;
+}
